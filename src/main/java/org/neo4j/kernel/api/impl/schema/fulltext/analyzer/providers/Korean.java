@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.neo4j.kernel.api.impl.fulltext.analyzer.providers;
+package org.neo4j.kernel.api.impl.schema.fulltext.analyzer.providers;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.ko.KoreanAnalyzer;
@@ -25,16 +25,18 @@ import org.neo4j.annotations.service.ServiceProvider;
 import org.neo4j.graphdb.schema.AnalyzerProvider;
 
 @ServiceProvider
-public class Korean extends AnalyzerProvider
-{
-    public Korean()
-    {
-        super("nori");
+public class Korean extends AnalyzerProvider {
+    public Korean() {
+        super("korean");
     }
 
     @Override
-    public Analyzer createAnalyzer()
-    {
+    public Analyzer createAnalyzer() {
         return new KoreanAnalyzer();
+    }
+
+    @Override
+    public String description() {
+        return "Korean analyzer.";
     }
 }
